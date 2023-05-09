@@ -3,6 +3,7 @@ package mysql
 import (
 	controller_models "dependency_inversion/models/controller"
 	database_models "dependency_inversion/models/database"
+	"fmt"
 )
 
 type UserMysqlRepository struct {
@@ -17,4 +18,11 @@ func (u *UserMysqlRepository) GetUser(id int) controller_models.User {
 		National_code: "4420926120",
 	}
 	return user.Present()
+}
+
+func (u *UserMysqlRepository) UpdateUser(user controller_models.User) {
+	user_db := &database_models.User{}
+	user_db.Convert(user)
+	fmt.Printf("updated successfully %+v", *user_db)
+	// update
 }

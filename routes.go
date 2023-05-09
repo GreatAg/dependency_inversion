@@ -6,5 +6,6 @@ import (
 
 func init_routes() {
 	sample := app.Group("/sample")
-	sample.Get("/dependency_inversion", handler.GetUser)
+	sample.Get("/getUser/:id", handler.GetUser)
+	sample.Post("/updateUser", handler.UpdateUser)
 }

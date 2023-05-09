@@ -13,3 +13,7 @@ type User struct {
 func (u User) Present() controller_models.User {
 	return controller_models.User(u)
 }
+
+func (u *User) Convert(user controller_models.User) {
+	u.Id = user.Id
+}
