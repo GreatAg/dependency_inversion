@@ -6,8 +6,10 @@ import (
 	"fmt"
 )
 
-type UserMysqlRepository struct {
+type UserMysqlRepository struct { //unexport
 }
+
+//factory
 
 func (u *UserMysqlRepository) GetUser(id int) controller_models.User {
 	user := database_models.User{

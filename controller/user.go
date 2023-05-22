@@ -14,18 +14,22 @@ type Iuser interface {
 	UpdateUser(controller_models.User)
 }
 
-type UserRepository struct {
+type userRepository struct {
+}
+
+func NewUserController() *userRepository {
+	return &userRepository{}
 }
 
 func newUserRepository() Iuser {
 	return &mysql.UserMysqlRepository{}
 }
 
-func (u *UserRepository) GetUser(id string) api_models.User {
+func (u *userRepository) GetUser(id string) api_models.User {
 	return newUserRepository().GetUser(cast.ToInt(id)).Present()
 }
 
-func (u *UserRepository) UpdateUser(user api_models.User) {
+func (u *userRepository) UpdateUser(user api_models.User) {
 	user_model := &controller_models.User{}
 	user_model.Convert(user)
 	fmt.Printf("in controller %+v", user_model)

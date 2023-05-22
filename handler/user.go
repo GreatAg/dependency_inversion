@@ -15,7 +15,7 @@ type IUserPresentation interface {
 }
 
 func newUserPresentationRepository() IUserPresentation {
-	return &controller.UserRepository{}
+	return controller.NewUserController()
 }
 
 func GetUser(c *fiber.Ctx) error {
